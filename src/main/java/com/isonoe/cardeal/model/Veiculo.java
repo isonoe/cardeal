@@ -1,7 +1,9 @@
 package com.isonoe.cardeal.model;
 
 import com.isonoe.cardeal.enums.EnumTipoVeiculo;
+import lombok.Data;
 
+@Data
 public class Veiculo {
     Integer id;
     String placa;
@@ -9,7 +11,7 @@ public class Veiculo {
     EnumTipoVeiculo tipoVeiculo;
     Integer capacidadeTotal;
     Integer consumoPorKm;
-    Integer consumo;
+
 
     // TODO (Dimensoes uteis para entrega)
 }

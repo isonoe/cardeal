@@ -1,5 +1,8 @@
 package com.isonoe.cardeal.model.common;
 
+import lombok.Data;
+
+@Data
 public class BaseEntity {
     Integer id;
     String criadoEm;

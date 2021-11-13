@@ -17,4 +17,10 @@ public class GreetingController {
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
+
+    @GetMapping("/converter")
+    public void convertJsonToObject(@RequestParam(value = "name", defaultValue = "World") String name) {
+        (new Greeting()).convertJsonToObject();
+        return;
+    }
 }
