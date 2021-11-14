@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 
 @Data
-//@Builder
-//@NoArgsConstructor
-//@AllArgsConstructor
 public class WayPoint extends BaseEntity {
 
     LatLng latLng;

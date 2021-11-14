@@ -7,6 +7,5 @@ import lombok.Data;
 public class Endereco extends BaseEntity {
 
     String descricao;
-
-    LatLng node;
+    Integer wayPointId;
 }

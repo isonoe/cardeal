@@ -6,11 +6,17 @@ import lombok.Data;
 import java.util.ArrayList;
 
 @Data
-public class Cromossomo extends BaseEntity {
+public class Chromosome extends BaseEntity {
 
     ArrayList<Entrega> entregas;
 
     ArrayList<Rota> rotas;
 
     Veiculo veiculo;
+
+    public Chromosome(){}
+
+    public Chromosome(Integer id){
+        super(id);
+    }
 }

@@ -3,11 +3,9 @@ package com.isonoe.cardeal.aglib;
 import com.isonoe.cardeal.model.Rota;
 import com.isonoe.cardeal.model.WayPoint;
 import com.isonoe.cardeal.model.WayPointLink;
-import org.springframework.util.RouteMatcher;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 

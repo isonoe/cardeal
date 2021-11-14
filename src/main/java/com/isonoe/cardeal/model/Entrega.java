@@ -8,12 +8,8 @@ import lombok.Data;
 public class Entrega extends BaseEntity {
 
     String descricao;
-
     Endereco saida;
-
     Endereco destino;
-
     Integer peso;
-
     EnumTipoVeiculo veiculoCapacidadeMinima;
 }

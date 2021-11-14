@@ -1,5 +1,6 @@
 package com.isonoe.cardeal.service;
 
+import com.isonoe.cardeal.aglib.AgOrchestrator;
 import com.isonoe.cardeal.dto.common.AnaliseCompletaDTO;
 import com.isonoe.cardeal.dto.common.ResponseBodyDTO;
 import com.isonoe.cardeal.dto.common.ResponseDTO;
@@ -34,6 +35,10 @@ public class RouteManagerService {
 
     public ResponseDTO startAnaliseCompleta(AnaliseCompletaDTO analiseCompleta) {
         System.out.println(analiseCompleta);
+
+        AgOrchestrator orchestrator = new AgOrchestrator(analiseCompleta);
+
+        orchestrator.startAnalise();
 
         ResponseDTO response = new ResponseDTO();
 

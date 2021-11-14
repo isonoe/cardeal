@@ -9,6 +9,8 @@ import java.util.List;
 
 @Data
 public class AnaliseCompletaDTO {
+
+    Integer numberOfGenerations;
     Integer numberOfCromossomes;
     List<Entrega> entregas;
     List<Veiculo> veiculos;
