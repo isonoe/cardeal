@@ -1,6 +1,6 @@
 package com.isonoe.cardeal.aglib;
 
-import com.isonoe.cardeal.model.Rota;
+import com.isonoe.cardeal.model.Route;
 import com.isonoe.cardeal.model.WayPoint;
 import com.isonoe.cardeal.model.WayPointLink;
 
@@ -11,43 +11,55 @@ import java.util.Random;
 
 public class AgRoute {
 
-    public static Rota generateRoute(WayPoint saida, WayPoint destino, Map<BigDecimal, WayPoint> wayPoints) {
-        Rota rota = new Rota();
+    /*
+    * TODO(criar indexacao de melhores rotas entre pontos persistida)
+    * */
+    public static Route generateRoute(
+            Integer origem,
+            Integer destino,
+            Map<Integer, WayPoint> indexedMapping
+    ) {
+        Route rota = new Route();
 
-        ArrayList<WayPoint> wayPointsLista = new ArrayList<>();
+        ArrayList<Integer> wayPointsLista = new ArrayList<>();
 
         Integer limitePath = 100;
 
         Random gerador = new Random();
 
-        WayPoint actualWaypoint = saida;
+        WayPoint actualWaypoint = indexedMapping.get(origem);
+
+        wayPointsLista.add(actualWaypoint.getId());
 
         boolean matchPath = false;
 
-        while (rota.getWayPoints().size() < limitePath
+        while (wayPointsLista.size() < limitePath
                 && actualWaypoint.getWpLinks().size() > 0
                 && !matchPath) {
             int rNum = gerador.nextInt(actualWaypoint.getWpLinks().size());
 
-            WayPointLink wpLink = actualWaypoint.getWpLinks().get(rNum);
-
-            actualWaypoint = wayPoints.get(wpLink.getId());
-
-            if (actualWaypoint.getId() == destino.getId()) {
-                matchPath = true;
-            } else {
-
-                rota.setDistanciaTotal(rota.getDistanciaTotal().add(wpLink.getDistance()));
-
-                wayPointsLista.add(actualWaypoint);
+            boolean validPoint = false;
+            WayPointLink wpLink = new WayPointLink();
+            while (!validPoint) {
+                wpLink = actualWaypoint.getWpLinks().get(rNum);
+                WayPoint wayPoint = indexedMapping.get(wpLink.getId());
+                if (wayPoint.getId() != actualWaypoint.getId()) {
+                    actualWaypoint = wayPoint;
+                    validPoint = true;
+                }
             }
 
+            rota.setDistanciaTotal(rota.getDistanciaTotal().add(wpLink.getDistance()));
+            wayPointsLista.add(actualWaypoint.getId());
+
+            if (actualWaypoint.getId().equals(destino)) {
+                matchPath = true;
+                rota.setExactMatch(true);
+            }
         }
 
         rota.setWayPoints(wayPointsLista);
 
         return rota;
     }
-
-
 }

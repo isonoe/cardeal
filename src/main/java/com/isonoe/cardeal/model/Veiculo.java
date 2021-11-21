@@ -8,12 +8,19 @@ import java.math.BigDecimal;
 
 @Data
 public class Veiculo extends BaseEntity {
-    String placa;
-    String descricao;
-    EnumTipoVeiculo tipoVeiculo;
-    Integer capacidadeTotal;
-    BigDecimal consumoPorKm;
 
+    String placa;
+
+    String descricao;
+
+    EnumTipoVeiculo tipoVeiculo;
+
+    // considerado uso padrao no volume de embalagens para limitar o escopo
+    BigDecimal volumeTotalLt;
+
+    BigDecimal volumeOcupadoLt;
+
+    BigDecimal consumoPorKm;
 
     // TODO (Dimensoes uteis para entrega)
 }

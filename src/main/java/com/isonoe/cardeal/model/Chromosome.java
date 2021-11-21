@@ -4,15 +4,12 @@ import com.isonoe.cardeal.model.common.BaseEntity;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class Chromosome extends BaseEntity {
 
-    ArrayList<Entrega> entregas;
-
-    ArrayList<Rota> rotas;
-
-    Veiculo veiculo;
+    List<PacoteEntrega> pacoteEntregas;
 
     public Chromosome(){}
 

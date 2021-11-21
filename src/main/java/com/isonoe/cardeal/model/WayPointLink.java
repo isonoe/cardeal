@@ -7,6 +7,6 @@ import java.math.BigDecimal;
 
 @Data
 public class WayPointLink {
-    BigDecimal id;
+    Integer id;
     BigDecimal distance;
 }

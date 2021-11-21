@@ -21,16 +21,20 @@ public class AgOrchestrator {
         )
      */
 
-    public void startAnalise(){
+    public void startAnalise() {
         // Gerar a populacao
-        AgPopulation.generatePopulation(
+        this.population = AgPopulation.generatePopulation(
                 this.analiseCompleta.getNumberOfCromossomes(),
                 this.analiseCompleta.getEntregas(),
+                this.analiseCompleta.getVeiculos(),
                 this.indexedMapping);
 
         // Fase Fitness
+        this.population = AgFitness.startEvaluatePopulation(population);
 
-        // Fase Torneio
+        // Fase Selecao Torneio
+        this.population = AgSelection.startSelectionPopulation(population);
+
 
         // Fase Crossover
 
@@ -38,7 +42,7 @@ public class AgOrchestrator {
 
     }
 
-    public AgOrchestrator(AnaliseCompletaDTO analiseCompleta){
+    public AgOrchestrator(AnaliseCompletaDTO analiseCompleta) {
         this.setAnaliseCompleta(analiseCompleta);
         this.indexedMapping = AgMapping.getIndexedMapping(analiseCompleta.getMapping());
     }

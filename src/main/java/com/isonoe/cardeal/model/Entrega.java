@@ -4,12 +4,18 @@ import com.isonoe.cardeal.enums.EnumTipoVeiculo;
 import com.isonoe.cardeal.model.common.BaseEntity;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class Entrega extends BaseEntity {
 
     String descricao;
-    Endereco saida;
+
+    Endereco origem;
+
     Endereco destino;
-    Integer peso;
-    EnumTipoVeiculo veiculoCapacidadeMinima;
+
+    BigDecimal peso;
+
+    BigDecimal volumeEmbalagemLt;
 }
