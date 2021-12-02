@@ -12,6 +12,7 @@ public class AnaliseCompletaDTO {
 
     Integer numberOfGenerations;
     Integer numberOfCromossomes;
+    Double mutationPercentage;
     List<Entrega> entregas;
     List<Veiculo> veiculos;
     List<WayPoint> mapping;

@@ -29,14 +29,28 @@ public class AgOrchestrator {
                 this.analiseCompleta.getVeiculos(),
                 this.indexedMapping);
 
-        // Fase Fitness
-        this.population = AgFitness.startEvaluatePopulation(population);
+        for (int i = 0; i < this.analiseCompleta.getNumberOfGenerations(); i++) {
 
-        // Fase Selecao Torneio
-        this.population = AgSelection.startSelectionPopulation(population);
+            // Fase Fitness
+            this.population = AgFitness.startEvaluatePopulation(population);
 
+            // Fase Selecao Torneio
+            this.population = AgSelection.startSelectionPopulation(population);
 
-        // Fase Crossover
+            // Fase Crossover
+            this.population = AgCrossover.startCrossoverPopulation(
+                    population,
+                    this.analiseCompleta.getNumberOfCromossomes());
+
+            // Fase Mutation
+            this.population = AgMutation.startMutationPopulation(
+                    population,
+                    this.analiseCompleta.getMutationPercentage(),
+                    this.analiseCompleta.getVeiculos(),
+                    this.indexedMapping);
+
+            int a = 0;
+        }
 
         // Fase Mutation
 
